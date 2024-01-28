@@ -5,7 +5,7 @@ all: config build setup main
 
 config:
 	@echo "Configuration des dependances..."
-	sudo ./install.sh
+	sudo bash install.sh
 
 # Construit ou reconstruit les services
 build:
