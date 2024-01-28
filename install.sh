@@ -10,9 +10,3 @@ then
 else
     echo "make est déjà installé."
 fi
-
-# Exécution de make
-echo "Exécution de make..."
-make
-
-# Suite de votre script si nécessaire...
