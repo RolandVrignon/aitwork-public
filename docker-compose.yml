@@ -1,0 +1,160 @@
+version: '3.7'
+
+services:
+
+  setup:
+    profiles:
+      - setup
+    build:
+      context: elkstack/setup/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    init: true
+    volumes:
+      - ./elkstack/setup/entrypoint.sh:/entrypoint.sh:ro,Z
+      - ./elkstack/setup/lib.sh:/lib.sh:ro,Z
+      - ./elkstack/setup/roles:/roles:ro,Z
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+      METRICBEAT_INTERNAL_PASSWORD: ${METRICBEAT_INTERNAL_PASSWORD:-}
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+      HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD:-}
+      MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  back:
+    image: rolekss/aitwork-back:latest
+    container_name: aitwork-back
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - minio
+      - elasticsearch
+    networks:
+      - elk
+    environment:
+      LICENSE_IADOPT: ${LICENSE_IADOPT:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      COHERE_API_KEY: ${COHERE_API_KEY:-}
+      REPLICATE_API_TOKEN: ${REPLICATE_API_TOKEN:-}
+      CLIENT_JWT_SECRET: ${CLIENT_JWT_SECRET:-}
+      WEBSITE_JWT_SECRET: ${WEBSITE_JWT_SECRET:-}
+      WEBSITE_URL: ${WEBSITE_URL:-}
+      MONGODB_URL: ${MONGODB_URL:-}
+      ELASTICSEARCH_URL: ${ELASTICSEARCH_URL:-}
+      ELASTICSEARCH_USERNAME: ${ELASTICSEARCH_USERNAME:-}
+      ELASTICSEARCH_PASSWORD: ${ELASTICSEARCH_PASSWORD:-}
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT:-}
+      MINIO_PORT: ${MINIO_PORT:-}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
+      MINIO_BUCKET: ${MINIO_BUCKET:-}
+    volumes:
+      - ./back/uploads:/app/uploads
+
+  front:
+    image: rolekss/aitwork-front:latest
+    container_name: aitwork-front
+    depends_on:
+      - back
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL:-}
+    networks:
+      - elk
+    ports:
+      - "3000:3000"
+
+  mongodb:
+    image: mongo:6.0
+    container_name: public-mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - elk
+    volumes:
+      - public_mongodb_data:/data/db
+
+  minio:
+    image: minio/minio:RELEASE.2024-01-18T22-51-28Z
+    container_name: public-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - elk
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
+      MINIO_DEFAULT_BUCKET: ${MINIO_DEFAULT_BUCKET:-}
+    command: server /data
+    volumes:
+      - public_minio_data:/data
+
+  elasticsearch:
+    container_name: public-elasticsearch
+    image: elasticsearch:8.11.3
+    volumes:
+      - ./elkstack/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
+      - public_elasticsearch_data:/usr/share/elasticsearch/data:Z
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      node.name: elasticsearch
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      discovery.type: single-node
+    networks:
+      - elk
+    restart: unless-stopped
+
+  logstash:
+    container_name: public-logstash
+    image: logstash:8.11.3
+    volumes:
+      - ./elkstack/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - ./elkstack/logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+    ports:
+      - 5044:5044
+      - 50000:50000/tcp
+      - 50000:50000/udp
+      - 9600:9600
+    environment:
+      LS_JAVA_OPTS: -Xms256m -Xmx256m
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+  kibana:
+    container_name: public-kibana
+    image: kibana:8.11.3
+    volumes:
+      - ./elkstack/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
+    ports:
+      - 5601:5601
+    environment:
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+networks:
+  elk:
+    driver: bridge
+
+volumes:
+  public_elasticsearch_data:
+  public_minio_data:
+  public_mongodb_data:
