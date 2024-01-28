@@ -72,7 +72,6 @@ services:
     ports:
       - "${FRONT_PORT}:3000"
 
-
   mongodb:
     image: mongo:6.0
     container_name: public-mongodb
