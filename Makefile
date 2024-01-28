@@ -1,7 +1,11 @@
 # Cibles par défaut
 .PHONY: all setup main build down clean
 
-all: build setup main
+all: config build setup main
+
+config:
+	@echo "Installation des dépendances..."
+	sudo apt install make -y
 
 # Construit ou reconstruit les services
 build:
