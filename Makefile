@@ -4,8 +4,8 @@
 all: config build setup main
 
 config:
-	@echo "Installation des dépendances..."
-	sudo apt install make -y
+	@echo "Configuration des dependances..."
+	sudo ./install.sh
 
 # Construit ou reconstruit les services
 build:

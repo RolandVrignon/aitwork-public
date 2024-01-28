@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Mise à jour de la liste des paquets
-sudo apt update
-
 # Vérifiez si make est installé
 if ! command -v make &> /dev/null
 then
+    echo "Update des dépôts..."
+    sudo apt update
     echo "Installation de make..."
     sudo apt install make -y
 else
