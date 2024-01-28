@@ -1,0 +1,217 @@
+.new-chat {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+
+    @include xs {
+        padding: 0 5%;
+    }
+
+    @include sm {
+        padding: 0 5%;
+    }
+
+    @include md {
+        padding: 0 20%;
+    }
+
+    @include lg {
+        padding: 0 20%;
+    }
+
+    @include xl {
+        padding: 0 35%;
+    }
+
+    p {
+        font-family: $font-paragraphe !important;
+        span {
+            font-family: $font-title;
+        }
+
+        @include xs {
+            text-align: center;
+        }
+    
+        @include sm {
+            text-align: center;
+        }
+    
+        @include md {
+            text-align: center;
+        }
+    
+        @include lg {
+            width: 60vw;
+        }
+    
+        @include xl {
+            width: 20vw;
+        }
+    }
+
+    .project-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        position: relative;
+
+
+        @include xs {
+            width: 90vw;
+        }
+    
+        @include sm {
+            width: 90vw;
+        }
+    
+        @include md {
+            width: 50vw;
+        }
+    
+        @include lg {
+            width: 30vw;
+        }
+    
+        @include xl {
+            width: 30vw;
+        }
+
+        button {
+            font-size: 1.2em;
+            border-radius: 5px;
+            width: 100%;
+        }
+    }
+
+    .projects-parent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 3vh;
+        width: 100%;
+        .header {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            h3 {
+                margin-bottom: 10px;
+            }
+            svg {
+                cursor: pointer;
+            }
+        }
+        .projects-container {
+            height: 15vh;
+            overflow-y: scroll;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            width: calc(100% - 30px);
+
+            .btn {
+                margin: 0;
+                height: 1.5em;
+                flex: 1 0 calc(25% - 10px);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 2px;
+            }
+
+        }
+    }
+
+    .templates {
+        position: relative;
+        margin-top: 5vh;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 100%;
+
+        &::before, &::after {
+            z-index: 20;
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 70px; /* La largeur du dégradé */
+            pointer-events: none; /* Pour ne pas interférer avec les clics */
+        }
+
+        &::before {
+            left: 0;
+        }
+
+        &::after {
+            right: 0;
+        }
+
+        .wrapper { 
+            display: flex;
+            gap: 20px;
+            width: max-content;
+
+            &.left {
+                animation: scroll-left 120s linear infinite;
+            }
+
+            &.right {
+                animation: scroll-right 120s linear infinite;
+            }
+        }
+
+        .btn {
+            cursor: pointer;
+            padding: 10px 10px;
+            text-align: center;
+            border-radius: 30px;
+            font-family: $font-paragraphe;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;	
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }            
+    }
+}

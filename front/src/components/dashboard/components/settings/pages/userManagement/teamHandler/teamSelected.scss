@@ -1,0 +1,73 @@
+.submodule {
+
+    .back {
+        cursor: pointer;
+    }
+
+    .submodule-content {
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
+        box-sizing: border-box;
+        position: relative;
+
+        .delete {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            button {
+                width: 20%;
+                padding: 1vh;
+
+                @include xs {
+                    width: 100%;
+                    padding: 15px;
+                }
+            
+                @include sm {
+                    width: 100%;
+                    padding: 15px;
+                }
+            
+                @include md {
+                    width: 100%;
+                    padding: 15px;
+                }
+    
+                &:disabled{
+                    cursor: not-allowed;
+                }
+            }
+            ul{
+                margin-top: 10px;
+                font-family: $font-paragraphe;
+                font-size: 0.8em;
+                list-style: none;
+                padding-left: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                li {
+                    text-indent: 20px;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .titre {
+                display: flex;
+                align-items: baseline;
+                gap: 10px;
+                p {
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        @import "../userTable/userTable.scss";
+    }
+}

@@ -1,0 +1,454 @@
+$color_1: #333;
+$color_2: #fff;
+$background-color_1: #f0f0f0;
+$background-color_2: #1e88e5;
+$background-color_3: #fff;
+
+.chat-formatted {
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border-radius: 4px;
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+	position: relative;
+	max-width: 90%;
+    gap: 10px;
+	max-width: 100%;
+
+    .role {
+		border-radius: 5px;
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		img {
+			width: 90%;
+			height: auto;
+		}
+    }
+
+	.loader {
+		display: inline-block;
+		position: relative;
+		width: 80px;
+		height: 20px;
+
+		span {
+			position: absolute;
+			top: 10px;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			animation: loader 1.4s infinite ease-in-out both;
+
+			&:nth-child(1) {
+				left: 4px;
+				animation-delay: -0.32s;
+			}
+
+			&:nth-child(2) {
+				left: 16px;
+				animation-delay: -0.16s;
+			}
+
+			&:nth-child(3) {
+				left: 27px;
+				animation-delay: 0;
+			}
+		}
+	}
+
+	@keyframes loader {
+		0%, 80%, 100% {
+			transform: scale(0);
+		}
+		40% {
+			transform: scale(1.0);
+		}
+	}
+
+	.pdf-container {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		width: 100%;
+		max-width: calc(100% - 40px);
+		align-items: flex-start;
+		.pdf {
+			display: flex;
+			flex-direction: row;
+			height: 50px;
+			position: relative;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+			padding: 10px;
+			border-radius: 10px;
+			gap: 20px;
+			align-items: center;
+			.logo {
+				height: 100%;
+				position: relative;
+				img {
+					height: 100%;
+					width: auto;
+				}
+			}
+			.content {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				.pdf-title, .status {
+					font-family: $font-paragraphe;
+				}
+				.status {
+					&.ok {
+						p {
+							color: #16be59 !important;
+						}
+					}
+					&.nok {
+						p {
+							color: #ca3828 !important;
+						}
+					}
+				}
+			}
+		}
+		.infos {
+			font-family: $font-paragraphe;
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		.pdf-content {
+			font-family: $font-paragraphe;
+			flex: 6;
+			line-height: 25px;
+			font-size: $font-paragraphe;
+			max-width: calc(100% - 40px);
+			.pdf-page {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+				cursor: pointer;
+				.headline {
+					margin-top: 10px;
+					gap: 20px;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+				}
+				&:hover {
+					text-decoration: solid;
+				}
+				input {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.json-container{
+		width: 100%;
+
+		.buttons {
+			display: flex;
+			gap: 5px;
+		}
+	}
+
+	.content {
+		flex: 6;
+		line-height: 25px;
+		font-size: $font-paragraphe;
+		max-width: calc(100% - 40px);
+
+
+		h1 {
+			margin-bottom: 2em;
+			font-size: 2em;
+		}
+		h2 {
+			margin-bottom: 2em;
+			font-size: 1.75em;
+		}
+		h3 {
+			margin-bottom: 1.5em;
+			font-size: 1.5em;
+		}
+		h4 {
+			margin-bottom: 1em;
+			font-size: 1.25em;
+		}
+		h5 {
+			margin-bottom: 1em;
+			font-size: 1em;
+		}
+		h6 {
+			margin-bottom: 1em;
+			font-size: 0.75em;
+		}
+		p {
+			margin-bottom: 1.2em;
+			font-size: 1em;
+
+			span {
+				&.span-code {
+					font-weight: 900;
+				}
+			}
+		}
+		ul {
+			margin-left: 1.5em;
+			margin-bottom: 1em;
+			margin-top: 1em;
+			li {
+				font-family: $font-paragraphe;
+				margin-bottom: 1em;
+			}
+		}
+
+		ol {
+			margin-left: 1.5em;
+			margin-bottom: 1em;
+			margin-top: 1em;
+			li {
+				font-family: $font-paragraphe;
+				margin-bottom: 1em;
+			}
+		}
+
+		blockquote {
+			margin-left: 1.5em;
+			margin-bottom: 1em;
+			padding-left: 1em;
+		}
+
+		a {
+			font-family: 'serif';
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 0 auto;
+		}
+
+		em {
+			font-style: italic;
+		}
+
+		strong {
+			font-weight: bold;
+		}
+
+		pre {
+			border-radius: 10px;
+			position: relative;
+			max-width: 100%;
+
+			.codeContainer {
+				position: relative;
+				display: inline-block;
+				width: 100%;
+				border-radius: 10px !important;
+				overflow: auto;
+
+				.codeFormatted {
+					border-radius: 10px !important;
+				  position: relative;
+				  font-family: "Roboto Mono", monospace;
+				  border-radius: 10px !important;
+				  padding: 0 1em !important;
+				  margin: 0.5em 0px !important;
+				  line-height: 1.5em !important;
+				  font-size: 1em !important;
+				  white-space: pre !important;
+				  max-width: 100% !important; /* Limit width to prevent overflow */
+
+				  code {
+					display: inline-block;
+					white-space: pre;
+					overflow: auto;
+					max-width: 100%; /* Limit width to prevent overflow */
+					padding: 10px 0;
+				}
+				}
+
+				.copyButton {
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					background-color: rgba(0, 0, 0, 0.1);
+					border: none;
+					border-radius: 3px;
+					padding: 5px;
+					cursor: pointer;
+					transition: background-color 0.2s;
+				}
+
+				.copyButton:hover {
+					background-color: rgba(0, 0, 0, 0.2);
+				}
+			}
+
+			span {
+				&.span-code {
+					display: block;
+					padding: 10px;
+					border-radius: 5px;
+					font-weight: 600;
+					width: 100%;
+					overflow: auto;
+					box-sizing: border-box;
+				}
+			}
+		}
+
+		.tableContainer {
+			width: 100%;
+			overflow: auto;
+			border-radius: 10px;
+			table {
+				table-layout: fixed;
+				font-family: $font-paragraphe;
+				box-sizing: border-box;
+				border-collapse: separate;
+				border-spacing: 0;
+				border-radius: 10px;
+				overflow: hidden;
+				margin-bottom: 1em;
+				min-width: 100%;
+
+				th, td {
+				  padding: 10px;
+				  text-align: left;
+				  box-sizing: border-box;
+
+				  .text {
+					  white-space: nowrap;
+					  overflow: hidden;
+					  text-overflow: ellipsis;
+				  }
+				}
+
+				thead {
+					tr {
+						border-radius: 10px;
+					}
+				}
+
+				tbody {
+				  tr:hover {
+					  cursor: pointer;
+				  }
+				}
+			}
+		}
+	}
+
+	.function-container {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		flex-grow: 1;
+		position: relative;
+		margin: 0 auto;
+
+		.description {
+			p {
+				font-size: 1rem;
+			}
+		}
+
+		button {
+			z-index: 50;
+			position: absolute;
+			height: 4vh;
+			border-radius: 20px;
+			width: 80%;
+			bottom: calc(0px - 0.5em - 0.5em - 50px - 2vh);
+			left: 50%;
+			transform: translateX(-50%);
+			position: relative;
+			overflow: hidden;
+
+			.button-content {
+				font-family: $font-title;
+				font-weight: 900;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 60;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+
+			.progressBar {
+				z-index: 55;
+				border-radius: 20px;
+				position: absolute;
+				background-color: lighten($primary-color, 30%);
+				height: 100%;
+				left: 0;
+				bottom: 0;
+				top: 0;
+				transition: width 0.4s ease-in-out;
+				width: 0%
+			}
+		}
+	}
+
+	.image {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		width: 100%;
+		position: relative;
+
+		.img-container {
+			border-radius: 20px;
+			overflow: hidden;
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+
+		.buttons {
+			display: flex;
+			gap: 20px;
+		}
+	}
+
+	.function-DCE {
+		width: 100%;
+
+		.footer-btn {
+			margin-top: 2vh;
+			display: flex;
+			gap: 20px;
+		}
+
+		@import "../FolderStructure/folderStructure.scss";
+		@import "../DCERender/DCERender.scss";
+	}
+
+    @import "./parameter/parameter.scss";
+}

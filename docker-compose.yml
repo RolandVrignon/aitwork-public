@@ -60,16 +60,18 @@ services:
       - public_back_data:/app/uploads
 
   front:
-    image: iadopt/aitwork-front:0.1
+    build:
+      context: front/
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
     container_name: aitwork-front
     depends_on:
       - back
-    environment:
-      - REACT_APP_API_URL=${REACT_APP_API_URL:-}
     networks:
       - elk
     ports:
       - "${FRONT_PORT}:3000"
+
 
   mongodb:
     image: mongo:6.0
@@ -83,7 +85,7 @@ services:
 
   mongo-express:
     image: mongo-express:latest
-    container_name: mongo-express
+    container_name: public-mongo-express
     depends_on:
       - mongodb
     ports:

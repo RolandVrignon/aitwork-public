@@ -1,0 +1,76 @@
+.submodule {
+    
+    .back {
+        cursor: pointer;
+    }
+
+    button {
+        padding: 10px 15px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
+        width: 100%;
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .informations,
+        .password,
+        .delete {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h2 {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+            }
+
+            form  {
+                label {
+                    width: 100%;
+                }
+                input, select, button {
+                    box-sizing: border-box;
+                    width: 100%;
+                    padding: 15px;
+                }
+            }
+        }
+
+        .delete {
+            button {
+                width: 30%;
+                font-size: 1em;
+                @include xs {
+                    width: 100%;
+                    padding: 15px;
+                }
+            
+                @include sm {
+                    width: 100%;
+                    padding: 15px;
+                }
+            
+                @include md {
+                    width: 100%;
+                    padding: 15px;
+                }
+            }
+        }
+    }
+}

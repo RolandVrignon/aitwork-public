@@ -1,0 +1,29 @@
+.submodule {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    width: 100%;
+
+    .back {
+        cursor: pointer;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 10px;
+
+        p {
+            font-size: 0.8em;
+            color: red;
+        }
+
+        input, button, select {
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+}

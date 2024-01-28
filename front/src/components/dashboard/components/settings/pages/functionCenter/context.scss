@@ -1,0 +1,62 @@
+ 
+.prompt {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+
+    .paragraphe, p {
+        font-size: 1em;
+        font-family: $font-paragraphe;
+        ol {
+            li {
+                margin-top: 10px;
+            }
+        }
+    }
+    .projects {
+        display: flex;
+        gap: 20px;
+        .btn, .form {
+            flex: 1;
+        }
+    }
+
+    .newProject {
+        width: 40%;
+        display: flex;
+        gap: 20px;
+        input {
+            flex: 5;
+        }
+    }
+    .textarea-container {
+        border-radius: 10px;
+        padding: 20px;
+        textarea {
+            max-width: 100%;
+            min-width: 100%;
+            min-height: 50vh;
+            padding: 0px !important;
+            font-size: 0.9em;
+            line-height: 30px;
+            border-radius: 10px;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 2px; /* Set the border radius for a rounded scrollbar line */
+            }
+        }
+    }
+    button {
+        width: 100%;
+        text-align: center;
+        padding: 2vh 0;
+        font-size: 1em !important;
+    }
+}
+
+@import "../agent/agent.scss";

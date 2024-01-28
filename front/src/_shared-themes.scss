@@ -1,0 +1,10 @@
+@import '_light-theme';
+@import '_dark-theme';
+
+@mixin shared-themes($isDarkMode: false) {
+    @if $isDarkMode {
+        @include dark-theme;
+    } @else {
+        @include light-theme;
+    }
+}

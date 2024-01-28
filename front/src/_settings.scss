@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Tiempos";
+  src: url("./assets/fonts/tiempos/TiemposHeadline-Regular_5qhhSkP25.otf");
+  src: url("./assets/fonts/tiempos/TiemposHeadline-Regular_5qhhSkP25.otf")
+      format("embedded-opentype"),
+    url("./assets/fonts/tiempos/TiemposHeadline-Regular_g8k6ia8vz.woff2")
+      format("woff2"),
+    url("./assets/fonts/tiempos/TiemposHeadline-Regular_7R5Pei2Uo.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Apax";
+  src: url("./assets/fonts/apax/Apax-Regular.otf");
+  src: url("./assets/fonts/apax/Apax-Regular.otf")
+      format("embedded-opentype"),
+    url("./assets/fonts/apax/Apax-Medium.woff2")
+      format("woff2"),
+    url("./assets/fonts/apax/Apax-Regular.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-title : "Tiempos";
+$font-paragraphe : "Inter";
+
+// Couleurs Primaires
+
+$primary-color: #7601fd;
+$gradient-primary: #c09eec;
+$gradient-secondary: #fdb99b;
+
+// Light Mode
+$light-titre : #11181c;
+$light-paragraphe: #687076;
+$light-lightgrey: #f1f3f5;
+$light-bg: whitesmoke;
+
+$light-success-text-color : #175607;
+$light-success-bg-color : #95e195;
+$light-error-text-color : #560707;
+$light-error-bg-color : #e19595;
+
+$light-second : #E14033;
+$light-third : #FFBA33;
+$light-fourth : #2f92cf;
+
+
+// Dark Mode
+$dark-titre : #eceede;
+$dark-paragraphe: #9ba1ac;
+$dark-lightgrey: #16181a;
+$dark-bg: #141414;
+$dark-success-text-color: #c2ebbd;
+$dark-success-bg-color: #074e07;
+$dark-error-text-color: #ebbdbd;
+$dark-error-bg-color: #4e0707;
+
+$dark-second : #be4d45;
+$dark-third : #cca34c;
+$dark-fourth : #3581af;

@@ -1,0 +1,56 @@
+.settings {
+    overflow-x: hidden;
+    position: relative;
+
+    .settings-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+        gap: 10vh;
+        overflow-x: hidden;
+
+        @include xs {
+            padding: 10vh 5vw;
+        }
+    
+        @include sm {
+            padding: 10vh 5vw;
+        }
+    
+        @include md {
+            padding: 10vh 15%;
+        }
+    
+        @include lg {
+            padding: 10vh 15%;
+        }
+    
+        @include xl {
+            padding: 10vh 15%;
+        }
+
+        .cross {
+            z-index: 20;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        @import "./pages/functionCenter/context.scss";
+        @import "./pages/Onboarding/context.scss";
+        @import "./pages/userManagement/user.scss";
+        @import "./pages/parametres/parametres.scss";
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px; /* Set the width of the scrollbar */
+        }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 2px; 
+        background-color: #ccc;
+    }
+}

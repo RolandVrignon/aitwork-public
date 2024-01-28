@@ -1,0 +1,102 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .choose {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        gap: 3vh;
+
+        @include xs {
+            margin: 0 2vw;
+        }
+
+        @include sm {
+            margin: 0 2vw;
+        }
+
+        @include md {
+            margin: 0 10vw;
+        }
+
+        @include lg {
+            margin: 0 20vw;
+        }
+
+        @include xl {
+            margin: 0 20vw;
+        }
+
+        .logo {
+            position: relative;
+
+            @include xs {
+                width: 50%;
+            }
+
+            @include sm {
+                width: 20%;
+            }
+
+            @include md {
+                width: 20%;
+            }
+
+            @include lg {
+                width: 20%;
+            }
+
+            @include xl {
+                width: 10%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .plugins {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1vw;
+
+
+            @include xs {
+                min-height: 40px;
+                flex-direction: column;
+            }
+
+            @include sm {
+                min-height: 40px;
+                flex-direction: column;
+            }
+
+            @include md {
+                min-height: 400px;
+                flex-direction: row;
+            }
+
+            @include lg {
+                min-height: 400px;
+                flex-direction: row;
+            }
+
+            @include xl {
+                min-height: 400px;
+                flex-direction: row;
+            }
+        }
+    }
+}

@@ -1,0 +1,570 @@
+[
+  {
+    "summary": false,
+    "page": 1,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 2,
+    "details": []
+  },
+  {
+    "summary": true,
+    "page": 3,
+    "details": [
+      {
+        "label": "- 0 GENERALITES POUR TOUS LES LOTS",
+        "page": "3"
+      },
+      {
+        "label": "- 0.01 OBJET DE L'OPERATION - MAITRISE D'OUVRAGE",
+        "page": "3"
+      },
+      {
+        "label": "- 0.02 MAITRISE D'OEUVRE",
+        "page": "3"
+      },
+      {
+        "label": "- 0.03 BUREAU DE CONTROLE TECHNIQUE",
+        "page": "4"
+      },
+      {
+        "label": "- 0.04 COORDINATION SANTE SECURITE",
+        "page": "4"
+      },
+      {
+        "label": "- 0.05 CONSISTANCE DES TRAVAUX",
+        "page": "4"
+      },
+      {
+        "label": "- 0.06 DECOMPOSITION DES LOTS",
+        "page": "5"
+      },
+      {
+        "label": "- 0.07 SECURITE INCENDIE",
+        "page": "5"
+      },
+      {
+        "label": "- 0.07.01 Classement de l'établissement",
+        "page": "5"
+      },
+      {
+        "label": "- 0.07.02 Résistance au feu des éléments principaux de la structure",
+        "page": "5"
+      },
+      {
+        "label": "- 0.08 DONNEES GENERALES RELATIVES A L'ENVIRONNEMENT",
+        "page": "5"
+      },
+      {
+        "label": "- 0.08.01 Vent",
+        "page": "5"
+      },
+      {
+        "label": "- 0.08.02 Neige",
+        "page": "6"
+      },
+      {
+        "label": "- 0.08.03 Bruit",
+        "page": "6"
+      },
+      {
+        "label": "- 0.08.04 Zone de sismicité",
+        "page": "6"
+      },
+      {
+        "label": "- 0.08.05 Atmosphère corrosive",
+        "page": "6"
+      },
+      {
+        "label": "- 0.09 ETUDE GEOTECHNIQUE",
+        "page": "6"
+      },
+      {
+        "label": "- 0.10 ETUDE DE POLLUTION DES SOLS",
+        "page": "6"
+      },
+      {
+        "label": "- 0.11 ETUDE DE RADON",
+        "page": "6"
+      },
+      {
+        "label": "- 0.12 PRESCRIPTIONS TECHNIQUES PARTICULIERES",
+        "page": "6"
+      },
+      {
+        "label": "- 0.12.01 Prescriptions réglementaires",
+        "page": "6"
+      },
+      {
+        "label": "- 0.12.02 Marques commerciales et cahiers des charges des fabricants",
+        "page": "7"
+      },
+      {
+        "label": "- 0.12.03 Règles de l'art - Règles professionnelles",
+        "page": "7"
+      },
+      {
+        "label": "- 0.12.04 Trous et réservations diverses - Calfeutrements - Dispositions constructives",
+        "page": "7"
+      },
+      {
+        "label": "- 0.13 TEXTES DE REFERENCES",
+        "page": "8"
+      },
+      {
+        "label": "- 0.14 CONTROLES - FONCTIONNEMENT DES INSTALLATIONS",
+        "page": "11"
+      },
+      {
+        "label": "- 0.14.01 Types de contrôle",
+        "page": "11"
+      },
+      {
+        "label": "- 0.14.02 Vérifications techniques - fonctionnement des installations",
+        "page": "12"
+      },
+      {
+        "label": "- 0.15 CONDITIONS GENERALES D'EXECUTION DES TRAVAUX",
+        "page": "12"
+      },
+      {
+        "label": "- 0.15.01 Connaissance des lieux et de tous les éléments afférents à l'exécution des travaux",
+        "page": "12"
+      },
+      {
+        "label": "- 0.15.02 Documents remis",
+        "page": "12"
+      },
+      {
+        "label": "- 0.15.03 Implantation",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.04 Installations communes",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.05 Contrôle d'accès du chantier",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.06 Nuisances sonores",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.07 Réception préalable des abords",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.08 Nettoyage des abords",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.09 Libération des emprises du chantier et remise en état des voiries",
+        "page": "13"
+      },
+      {
+        "label": "- 0.15.10 Protection des ouvrages",
+        "page": "13"
+      },
+      {
+        "label": "- 0.16 OPTIONS",
+        "page": "14"
+      },
+      {
+        "label": "- 0.17 VARIANTES",
+        "page": "14"
+      },
+      {
+        "label": "- 0.18 MISE EN OEUVRE",
+        "page": "14"
+      },
+      {
+        "label": "- 0.19 DOCUMENT DE FIN DE CHANTIER",
+        "page": "14"
+      },
+      {
+        "label": "- 0.20 COMBINAISON - ORGANIGRAMME",
+        "page": "14"
+      },
+      {
+        "label": "- 0.21 NOTICE ACOUSTIQUE",
+        "page": "14"
+      },
+      {
+        "label": "- 0.22 DEMARCHE ENVIRONNEMENTALE",
+        "page": "14"
+      },
+      {
+        "label": "- 0.23 MATERIAUX NON TRADITIONNELS",
+        "page": "14"
+      },
+      {
+        "label": "- 0.24 CARTE D'IDENTITE PROFESSIONNELLE",
+        "page": "15"
+      },
+      {
+        "label": "- 0.25 COMPTE PRORATA",
+        "page": "15"
+      },
+      {
+        "label": "- 0.26 PANNEAU DE CHANTIER",
+        "page": "15"
+      }
+    ]
+  },
+  {
+    "summary": false,
+    "page": 4,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 5,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 6,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 7,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 8,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 9,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 10,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 11,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 12,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 13,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 14,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 15,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 16,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 17,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 18,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 19,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 20,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 21,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 22,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 23,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 24,
+    "details": []
+  },
+  {
+    "summary": true,
+    "page": 25,
+    "details": [
+      {
+        "label": "1. GROS-OEUVRE",
+        "page": "4"
+      },
+      {
+        "label": "1.01 GENERALITES",
+        "page": "4"
+      },
+      {
+        "label": "1.01.01 OBJET DE L'OPERATION - MAITRISE D'OUVRAGE",
+        "page": "4"
+      },
+      {
+        "label": "1.01.02 PRESCRIPTIONS TECHNIQUES GENERALES",
+        "page": "4"
+      },
+      {
+        "label": "1.01.03 DISPOSITIONS GENERALES",
+        "page": "4"
+      },
+      {
+        "label": "1.01.04 PRESCRIPTIONS TECHNIQUES PARTICULIERES",
+        "page": "5"
+      },
+      {
+        "label": "1.01.05 SECURITE INCENDIE",
+        "page": "5"
+      },
+      {
+        "label": "1.01.06 DONNEES GENERALES RELATIVES A L'ENVIRONNEMENT",
+        "page": "5"
+      },
+      {
+        "label": "1.01.07 DEMARCHE ENVIRONNEMENTALE",
+        "page": "5"
+      },
+      {
+        "label": "1.01.08 NATURE DES MATERIAUX - ETAT DES SURFACES",
+        "page": "5"
+      },
+      {
+        "label": "1.01.08.01 Etat des parements des parois latérales et sous-faces",
+        "page": "5"
+      },
+      {
+        "label": "1.01.08.02 Etat des surfaces de dalles et planchers",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.03 Tolérances dimensionnelles",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.04 Essais",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.05 Huisseries",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.06 Huiles de décoffrage",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.07 Isolants utilisés",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.08 Réservations",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.09 Eaux de lavage",
+        "page": "6"
+      },
+      {
+        "label": "1.01.08.10 Protection contre la corrosion des ouvrages métalliques",
+        "page": "7"
+      },
+      {
+        "label": "1.01.08.11 Armature et aciers",
+        "page": "7"
+      },
+      {
+        "label": "1.01.09 ETUDES GEOTECHNIQUES",
+        "page": "7"
+      },
+      {
+        "label": "1.01.10 IMPLANTATION",
+        "page": "7"
+      },
+      {
+        "label": "1.01.11 ETAT DES LIEUX - CONSTAT D'HUISSIER",
+        "page": "7"
+      },
+      {
+        "label": "1.01.12 DESSINS D'EXECUTION ET RESERVATIONS",
+        "page": "7"
+      },
+      {
+        "label": "1.01.13 PRESENTATION DES OFFRES",
+        "page": "7"
+      },
+      {
+        "label": "1.02 DESCRIPTION ET POSITION DES OUVRAGES",
+        "page": "8"
+      },
+      {
+        "label": "1.02.01 TERRASSEMENTS",
+        "page": "8"
+      },
+      {
+        "label": "1.02.01.01 NETTOYAGE DU TERRAIN",
+        "page": "8"
+      },
+      {
+        "label": "1.02.01.02 DECAPAGE DE LA TERRE VEGETALE",
+        "page": "8"
+      },
+      {
+        "label": "1.02.01.03 FOUILLE EN MASSE",
+        "page": "8"
+      },
+      {
+        "label": "1.02.01.04 FOUILLES EN MASSE COMPLEMENTAIRES",
+        "page": "8"
+      },
+      {
+        "label": "1.02.01.05 FOUILLES EN RIGOLE",
+        "page": "9"
+      },
+      {
+        "label": "1.02.01.06 FOUILLES EN TROUS ISOLES",
+        "page": "9"
+      },
+      {
+        "label": "1.02.01.07 FOUILLES EN PUITS",
+        "page": "9"
+      },
+      {
+        "label": "1.02.01.08 REMBLAIEMENTS PERIPHERIQUES",
+        "page": "10"
+      },
+      {
+        "label": "1.02.02 FONDATIONS",
+        "page": "10"
+      },
+      {
+        "label": "1.02.02.01 BETON DE PROPRETE - GROS BETON - BETON POUR PUITS",
+        "page": "10"
+      },
+      {
+        "label": "1.02.02.02 SEMELLES BETON ARME FILANTES",
+        "page": "11"
+      },
+      {
+        "label": "1.02.02.03 SEMELLES ET MASSIFS BETON ARME ISOLES",
+        "page": "11"
+      },
+      {
+        "label": "1.02.02.04 RADIER BETON ARME",
+        "page": "11"
+      },
+      {
+        "label": "1.02.02.05 MISE A LA TERRE",
+        "page": "12"
+      },
+      {
+        "label": "1.02.03 INFRASTRUCTURE",
+        "page": "12"
+      },
+      {
+        "label": "1.02.03.01 LONGRINES",
+        "page": "12"
+      },
+      {
+        "label": "1.02.03.02 BETON BANCHE EN ELEVATION",
+        "page": "12"
+      },
+      {
+        "label": "1.02.03.03 POTEAUX",
+        "page": "13"
+      },
+      {
+        "label": "1.02.03.04 POUTRES - POUTRE-VOILE - LINTEAUX - BANDES NOYEES - CHEVETRES - CONSOLES - CORBEAUX",
+        "page": "13"
+      },
+      {
+        "label": "1.02.03.05 TAPIS DRAINANT SOUS DALLAGE",
+        "page": "14"
+      },
+      {
+        "label": "1.02.03.06 DALLAGE EN BETON ARME SUR TERRE-PLEIN",
+        "page": "14"
+      },
+      {
+        "label": "1.02.03.07 RAMPE EXTERIEURE EN BETON ARME SUR TERRE PLEIN",
+        "page": "15"
+      },
+      {
+        "label": "1.02.03.08 BECHES BA",
+        "page": "16"
+      },
+      {
+        "label": "1.02.03.09 PLANCHER DALLE PLEINE - NON CF ET CF 1 H",
+        "page": "16"
+      },
+      {
+        "label": "1.02.03.10 PLANCHER PREFABRIQUE POUTRELLES / HOURDIS ISOLANT",
+        "page": "16"
+      },
+      {
+        "label": "1.02.03.11 CHAINAGES BETON ARME",
+        "page": "17"
+      }
+    ]
+  },
+  {
+    "summary": false,
+    "page": 26,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 27,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 28,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 29,
+    "details": []
+  },
+  {
+    "summary": false,
+    "page": 30,
+    "details": []
+  }
+]
