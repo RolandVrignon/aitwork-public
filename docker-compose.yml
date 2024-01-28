@@ -32,7 +32,7 @@ services:
     image: rolekss/aitwork-back:latest
     container_name: aitwork-back
     ports:
-      - ${BACK_PORT:-8080}:8080:8080
+      - ${BACK_PORT:-8080}:8080
     depends_on:
       - mongodb
       - minio
