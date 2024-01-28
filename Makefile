@@ -1,24 +1,30 @@
 # Cibles par défaut
-.PHONY: all setup main build down
+.PHONY: all setup main build down clean
 
 all: build setup main
 
 # Construit ou reconstruit les services
 build:
 	@echo "Construction des services..."
-	docker-compose build
+	sudo docker-compose build
 
 # Démarre le setup
 setup:
 	@echo "Démarrage du setup..."
-	docker-compose up setup
+	sudo docker-compose up setup
 
-# Démarre la stack principale
+# Démarre la stack principale en mode détaché (silencieux)
 main:
-	@echo "Démarrage de la stack principale..."
-	docker-compose up -d
+	@echo "Démarrage de la stack principale en arrière-plan..."
+	sudo docker-compose up -d
 
 # Arrête et nettoie les services
 down:
 	@echo "Arrêt des services et nettoyage..."
-	docker-compose down
+	sudo docker-compose down
+
+# Supprime les images, volumes et réseaux
+clean:
+	@echo "Suppression des images, volumes et réseaux..."
+	sudo docker-compose down --rmi all --volumes --remove-orphans
+
