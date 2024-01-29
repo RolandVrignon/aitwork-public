@@ -57,7 +57,7 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
       MINIO_BUCKET: ${MINIO_BUCKET:-}
     volumes:
-      - public_back_data:/app/uploads
+      - public_back_data:/tmp/uploads
 
   front:
     build:
