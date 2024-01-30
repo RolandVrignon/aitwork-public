@@ -30,6 +30,7 @@ LICENSE_IADOPT="" ## If you want to use IADOPT API
 OPENAI_API_KEY="" ## If you want to use OpenAI API
 COHERE_API_KEY="" ## If you want to use Cohere API
 REPLICATE_API_TOKEN="" ## If you want to use Replicate API
+WEBSITE_URL="" ## URL of the website
 CLIENT_JWT_SECRET="" ## Genereate Random string
 WEBSITE_JWT_SECRET="" ## Generate Random String
 REACT_APP_API_URL="" ## URL of the client API
@@ -41,6 +42,8 @@ MINIO_ENDPOINT="minio"
 MINIO_ROOT_USER="minio"
 MINIO_ROOT_PASSWORD="minio123"
 MINIO_BUCKET="aitwork"
+MINIO_BROWSER_REDIRECT_URL="" ## URL of the minio server
+MINIO_SERVER_URL="" ## URL of the minio server
 
 ## BACKEND OPTIONNAL ENVIRONMENT VARIABLES
 OPENROUTER_API_KEY="" ## If you want to use OpenRouter API

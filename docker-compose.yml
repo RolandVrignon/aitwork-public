@@ -57,6 +57,7 @@ services:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
       MINIO_BUCKET: ${MINIO_BUCKET:-}
+      FILES_ENDPOINT_URL: ${FILES_ENDPOINT_URL:-}
     volumes:
       - public_back_data:/tmp/uploads
 
@@ -114,7 +115,9 @@ services:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
       MINIO_DEFAULT_BUCKET: ${MINIO_DEFAULT_BUCKET:-}
-    command: server /data
+      MINIO_BROWSER_REDIRECT_URL: ${MINIO_BROWSER_REDIRECT_URL:-}
+      MINIO_SERVER_URL: ${MINIO_SERVER_URL:-}
+    command: server /data --console-address ":${MINIO_CONSOLE_PORT}"
     volumes:
       - public_minio_data:/data
 
