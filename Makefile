@@ -7,8 +7,12 @@ config:
 	@echo "Configuration des dependances..."
 	sudo bash install.sh
 
-# Construit ou reconstruit les services
+# Set Intern Ip Address Minio Endpoint et Construit ou reconstruit les services
 build:
+	@echo "Récupération de l'adresse IP interne..."
+	@IP_ADDR=$$(ip addr | grep "inet\b" | awk '{print $$2}' | cut -d/ -f1 | sed -n '2p'); \
+	sed -i '/^MINIO_ENDPOINT=/d' .env; \
+	echo "MINIO_ENDPOINT=\"$$IP_ADDR\"" >> .env
 	@echo "Construction des services..."
 	sudo docker-compose build
 
@@ -26,6 +30,9 @@ main:
 down:
 	@echo "Arrêt des services et nettoyage..."
 	sudo docker-compose down
+
+re: down build setup main
+	@echo "Les services ont été redémarrés avec succès."
 
 # Supprime les images, volumes et réseaux
 clean:

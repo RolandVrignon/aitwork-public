@@ -103,21 +103,14 @@ services:
       - elk
 
   minio:
-    image: minio/minio:RELEASE.2024-01-18T22-51-28Z
-    container_name: public-minio
-    restart: unless-stopped
-    ports:
-      - "${MINIO_PORT}:9000"
-      - "${MINIO_CONSOLE_PORT}:9001"
-    networks:
-      - elk
+    image: minio/minio:latest
+    container_name: client-minio
+    network_mode: host
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
-      MINIO_DEFAULT_BUCKET: ${MINIO_DEFAULT_BUCKET:-}
-      MINIO_BROWSER_REDIRECT_URL: ${MINIO_BROWSER_REDIRECT_URL:-}
-      MINIO_SERVER_URL: ${MINIO_SERVER_URL:-}
-    command: server /data --console-address ":${MINIO_CONSOLE_PORT}"
+      TZ: Europe/Paris
+    command: server /data --console-address :9001
     volumes:
       - public_minio_data:/data
 
