@@ -57,7 +57,7 @@ services:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-}
       MINIO_BUCKET: ${MINIO_BUCKET:-}
-      FILES_ENDPOINT_URL: ${FILES_ENDPOINT_URL:-}
+      MINIO_SERVER_URL: ${MINIO_SERVER_URL:-}
     volumes:
       - public_back_data:/tmp/uploads
 
