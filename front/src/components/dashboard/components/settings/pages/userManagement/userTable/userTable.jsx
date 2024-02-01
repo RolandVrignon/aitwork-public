@@ -1,6 +1,9 @@
 import React from "react";
 
 const userTable = ({ users, getTeamName, handleState }) => {
+
+  
+
   return (
     <table>
       <thead>
@@ -20,12 +23,19 @@ const userTable = ({ users, getTeamName, handleState }) => {
           <th>
             <div className="text">Equipe</div>
           </th>
-
         </tr>
       </thead>
       <tbody>
         {users.map((user, index) => (
-          <tr key={index} onClick={() => handleState('userSelected', user)}>
+          <tr
+            key={index}
+            className={user.email === "admin@iadopt.fr" ? "disabledClass" : ""}
+            onClick={() => {
+              if (user.email !== "admin@iadopt.fr") {
+                handleState("userSelected", user);
+              }
+            }}
+          >
             <td>
               <div className="text">{user.firstName}</div>
             </td>

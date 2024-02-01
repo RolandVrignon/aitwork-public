@@ -69,7 +69,7 @@ const ChatSidebar = ({ Request, handleSelectChat, updateChatDb, ...props }) => {
 
   return (
     <>
-      <div className="specialized-chatbot">
+      {/* <div className="specialized-chatbot">
         <select name="" id="" onChange={(e) => setSelectedAgent(e.target.value)}>
           <option value="">-- Select Agent --</option>
           {agents &&
@@ -79,7 +79,7 @@ const ChatSidebar = ({ Request, handleSelectChat, updateChatDb, ...props }) => {
               </option>
             ))}
         </select>
-      </div>
+      </div> */}
 
       <div className="new">
         <div className="btn new-chat" onClick={() => handleNewChat()}>

@@ -50,7 +50,7 @@ const SettingsSidebar = (props) => {
       )}
 
 
-      {user.role !== "nothing" && cogiproducts === "cogichat" && (
+      {/* {user.role !== "nothing" && cogiproducts === "cogichat" && (
         <div
           className={`btn ${settings === "functionCenter" ? "active" : ""}`}
           onClick={() => setSettings("functionCenter")}
@@ -70,10 +70,10 @@ const SettingsSidebar = (props) => {
           </svg>
           Gestion des agents
         </div>
-      )}
+      )} */}
 
 
-      {
+      {user.role === "superadmin" && (
         <div
           className={`btn ${settings === "user" ? "active" : ""}`}
           onClick={() => setSettings("user")}
@@ -95,7 +95,7 @@ const SettingsSidebar = (props) => {
           </svg>
           Gestion de l'entreprise
         </div>
-      }
+      )}
     </div>
   );
 };

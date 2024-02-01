@@ -56,6 +56,8 @@ const User = ({ Request, userActif }) => {
   }, []);
 
   const handleState = (stateName, value) => {
+    
+
     switch (stateName) {
       case "newUser":
         setNewUser(value);

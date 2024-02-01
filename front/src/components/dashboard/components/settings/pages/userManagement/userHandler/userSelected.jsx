@@ -107,7 +107,7 @@ const UserSelected = ({ Request, handleState, user, setUsers, teams, userActif }
     };
     deleteData();
   };
-  
+
   return (
     <div className="submodule">
       <div className="back" onClick={() => handleState("back", null)}>
@@ -232,7 +232,7 @@ const UserSelected = ({ Request, handleState, user, setUsers, teams, userActif }
           <h2>
             <DeleteOutlinedIcon /> Supprimer compte
           </h2>
-          <button onClick={() => handleDelete()} disabled={userActif.email === user.email}>
+          <button onClick={() => handleDelete()} disabled={userActif.email === user.email || user.email === "admin@iadopt.fr"}>
             Supprimer
           </button>
           {userActif.email === user.email && <p>Vous ne pouvez pas supprimer votre propre compte.</p>}

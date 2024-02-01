@@ -278,7 +278,7 @@ const Login = ({ navbarHeight, darkMode, toggleDarkMode }) => {
           <p>
             {" "}
             © All rights reserved -{" "}
-            <a href="https://iadopt.fr" target="_blanc" rel="noreferrer">
+            <a href="https://www.iadopt.fr" target="_blanc" rel="noreferrer">
               iadopt.
             </a>{" "}
             - {new Date().getFullYear()}

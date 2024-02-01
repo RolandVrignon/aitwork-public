@@ -26,8 +26,12 @@
 
       tbody {
         tr:hover {
-            cursor: pointer;
-        } 
+          cursor: pointer;
+        }
+
+        tr.disabledClass:hover {
+          cursor: not-allowed;
+        }
       }
     }
   }

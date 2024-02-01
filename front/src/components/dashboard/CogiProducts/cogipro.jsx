@@ -227,14 +227,14 @@ const Cogichat = ({ darkMode, toggleDarkMode }) => {
               <div className="box">
                 {darkMode ? (
                   <img
-                    src="https://ik.imagekit.io/z0tzxea0wgx/Iadopt/iadopt-logo-white_v24znbkTs.png?updatedAt=1705521455950"
-                    alt="logo"
-                  />
+                  src="https://ik.imagekit.io/z0tzxea0wgx/Cogitum/aitwork_baseline_darkmode_ZbC5OpB1t?updatedAt=1696434586106"
+                  alt="logo"
+                />
                 ) : (
                   <img
-                    src="https://ik.imagekit.io/z0tzxea0wgx/Iadopt/iadopt-logo-black_THNVE1NJA.png?updatedAt=1705521455996"
-                    alt="logo"
-                  />
+                  src="https://ik.imagekit.io/z0tzxea0wgx/Cogitum/aitwork_baseline_lightmode_wPPQqeb8w?updatedAt=1696434528275"
+                  alt="logo"
+                />
                 )}
               </div>
               <div className="back"></div>

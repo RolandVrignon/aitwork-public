@@ -571,8 +571,11 @@ time, mark, audio, video {
 }
 .App.light-mode .settings .users tbody tr:hover {
   background-color: #e3cbff;
-  border: 1px solid #e3cbff;
   color: #5e01ca;
+}
+.App.light-mode .settings .users tbody .disabledClass:hover {
+  background-color: transparent;
+  color: black;
 }
 .App.light-mode .settings .users thead tr {
   border-bottom: 1px solid #c2c2c2;
@@ -1177,8 +1180,11 @@ time, mark, audio, video {
 }
 .App.dark-mode .settings .users tbody tr:hover {
   background-color: #e3cbff;
-  border: 1px solid #e3cbff;
   color: #5e01ca;
+}
+.App.dark-mode .settings .users tbody .disabledClass:hover {
+  background-color: transparent;
+  color: #d3d5da;
 }
 .App.dark-mode .settings .users thead tr {
   border-bottom: 1px solid #474747;
@@ -4386,6 +4392,9 @@ time, mark, audio, video {
 .dashboard-container .cogichat .big-container .settings .settings-container .content .users table tbody tr:hover {
   cursor: pointer;
 }
+.dashboard-container .cogichat .big-container .settings .settings-container .content .users table tbody tr.disabledClass:hover {
+  cursor: not-allowed;
+}
 .dashboard-container .cogichat .big-container .settings .settings-container .submodule .back {
   cursor: pointer;
 }
@@ -4654,6 +4663,9 @@ time, mark, audio, video {
 }
 .dashboard-container .cogichat .big-container .settings .settings-container .submodule .submodule-content .users table tbody tr:hover {
   cursor: pointer;
+}
+.dashboard-container .cogichat .big-container .settings .settings-container .submodule .submodule-content .users table tbody tr.disabledClass:hover {
+  cursor: not-allowed;
 }
 .dashboard-container .cogichat .big-container .settings .settings-container .user {
   display: flex;

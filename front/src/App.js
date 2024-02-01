@@ -112,7 +112,7 @@ function App() {
           window.location.assign("/");
         } else {
           if (window.location.pathname === "/") {
-            window.location.assign("/dashboard");
+            window.location.assign("/chat");
           }
         }
         if (decodedToken.exp * 1000 > Date.now()) {
