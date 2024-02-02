@@ -10,7 +10,6 @@ services:
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     init: true
-    network_mode: host
     volumes:
       - ./elkstack/setup/entrypoint.sh:/entrypoint.sh:ro,Z
       - ./elkstack/setup/lib.sh:/lib.sh:ro,Z
@@ -24,19 +23,25 @@ services:
       HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD:-}
       MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
       BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
     depends_on:
       - elasticsearch
 
   back:
     image: iadopt/aitwork-back:0.1.1
     container_name: aitwork-back
+    ports:
+      - "${BACK_PORT}:8080"
     depends_on:
       - mongodb
       - minio
       - elasticsearch
+    networks:
+      - elk
     restart: unless-stopped
-    network_mode: host
     environment:
+      LICENSE_IADOPT: ${LICENSE_IADOPT:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       COHERE_API_KEY: ${COHERE_API_KEY:-}
       REPLICATE_API_TOKEN: ${REPLICATE_API_TOKEN:-}
@@ -61,16 +66,22 @@ services:
       args:
         REACT_APP_API_URL: ${REACT_APP_API_URL}
     container_name: aitwork-front
-    network_mode: host
     restart: unless-stopped
     depends_on:
       - back
+    networks:
+      - elk
+    ports:
+      - "${FRONT_PORT}:3000"
 
   mongodb:
     image: mongo:6.0
     container_name: public-mongodb
     restart: unless-stopped
-    network_mode: host
+    ports:
+      - "${MONGODB_PORT}:27017"
+    networks:
+      - elk
     volumes:
       - public_mongodb_data:/data/db
 
@@ -78,14 +89,17 @@ services:
     image: mongo-express:latest
     container_name: public-mongo-express
     restart: unless-stopped
-    network_mode: host
     depends_on:
       - mongodb
+    ports:
+      - "${MONGO_EXPRESS_PORT}:8081"
     environment:
       ME_CONFIG_MONGODB_SERVER: ${ME_CONFIG_MONGODB_SERVER}
       ME_CONFIG_MONGODB_PORT: ${ME_CONFIG_MONGODB_PORT}
       ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
       ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+    networks:
+      - elk
 
   minio:
     image:  quay.io/minio/minio:latest
@@ -103,43 +117,59 @@ services:
   elasticsearch:
     container_name: public-elasticsearch
     image: elasticsearch:8.11.3
-    network_mode: host
     volumes:
       - ./elkstack/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
       - public_elasticsearch_data:/usr/share/elasticsearch/data:Z
+    ports:
+      - "${ELASTICSEARCH_PORT}:9200"
+      - "${ELASTICSEARCH_TCP_PORT}:9300"
     environment:
       node.name: elasticsearch
       ES_JAVA_OPTS: -Xms512m -Xmx512m
       ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
       discovery.type: single-node
+    networks:
+      - elk
     restart: unless-stopped
 
   logstash:
     container_name: public-logstash
-    network_mode: host
     image: logstash:8.11.3
     volumes:
       - ./elkstack/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./elkstack/logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+    ports:
+      - "${LOGSTASH_BEATS_PORT}:5044"
+      - "${LOGSTASH_TCP_PORT}:50000/tcp"
+      - "${LOGSTASH_UDP_PORT}:50000/udp"
+      - "${LOGSTASH_MONITORING_PORT}:9600"
     environment:
       LS_JAVA_OPTS: -Xms256m -Xmx256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+    networks:
+      - elk
     depends_on:
       - elasticsearch
     restart: unless-stopped
 
   kibana:
     container_name: public-kibana
-    network_mode: host
     image: kibana:8.11.3
     volumes:
       - ./elkstack/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
+    ports:
+      - "${KIBANA_PORT}:5601"
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
     depends_on:
       - elasticsearch
     restart: unless-stopped
 
+networks:
+  elk:
+    driver: bridge
 
 volumes:
   public_back_data:
