@@ -103,7 +103,7 @@ services:
       - elk
 
   minio:
-    image: minio/minio:latest
+    image: bitnami/minio:2024-debian-11
     container_name: client-minio
     network_mode: host
     environment:
