@@ -9,6 +9,10 @@ config:
 
 # Set Intern Ip Address Minio Endpoint et Construit ou reconstruit les services
 build:
+	@echo "Récupération de l'adresse IP interne..."
+	@IP_ADDR=$$(ip addr | grep "inet\b" | awk '{print $$2}' | cut -d/ -f1 | sed -n '2p'); \
+	sed -i '/^MINIO_LOCAL_ENDPOINT=/d' .env; \
+	echo "MINIO_LOCAL_ENDPOINT=\"$$IP_ADDR\"" >> .env
 	@echo "Construction des services..."
 	sudo docker-compose build
 
