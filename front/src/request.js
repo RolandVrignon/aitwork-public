@@ -9,6 +9,11 @@ let instance = axios.create({
   },
 });
 
+async function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+
 const setAuthorizationHeader = (config, token) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -89,6 +94,9 @@ const PostFile = async (
           "blob-folder": blobFolder,
         },
       };
+
+      console.log("config:", config);
+
       const response = await instance.post(path, chunkFormData, config);
 
       // Mettre à jour blobFolder avec la valeur renvoyée par le serveur
@@ -102,8 +110,23 @@ const PostFile = async (
         onProgress(progress);
       }
 
-      if (response.data && response.data.end) {
-        return response.data;
+      if (response.data && response.data.jobId) {
+        while (true) {
+          await sleep(2000);
+          const res = await fetch(`${process.env.REACT_APP_API_URL}/api/public/asyncjob/${response.data.jobId}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              }
+          });
+          const data = await res.json();
+          console.log('data:', data);
+          if (data.status === "completed") {
+              return (data.result);
+          } else {
+              console.log("waiting...")
+          }
+        }
       }
 
       start = end;
