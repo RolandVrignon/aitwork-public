@@ -1,0 +1,147 @@
+server {
+    listen 80;
+    server_name ${SUBDOMAIN}.${DOMAIN} ${SUBDOMAIN}-api.${DOMAIN} ${SUBDOMAIN}-minio.${DOMAIN} ${SUBDOMAIN}-minio-s3.${DOMAIN} ${SUBDOMAIN}-grafana.${DOMAIN} ${SUBDOMAIN}-mongo-express.${DOMAIN};
+
+    location /.well-known/acme-challenge/ {
+        root /etc/nginx/certbot-conf;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}.${DOMAIN};
+
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://front:${FRONT_PORT};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}-api.${DOMAIN};
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}-api.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}-api.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://back:${BACK_PORT};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}-minio.${DOMAIN};
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}-minio.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}-minio.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://minio:${MINIO_CONSOLE_PORT};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}-minio-s3.${DOMAIN};
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}-minio-s3.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}-minio-s3.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    ignore_invalid_headers off;
+    client_max_body_size 0;
+    proxy_buffering off;
+    proxy_request_buffering off;
+
+
+    location / {
+        proxy_pass http://minio:${MINIO_PORT};
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_connect_timeout 300;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        chunked_transfer_encoding off;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}-kibana.${DOMAIN};
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}-kibana.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}-kibana.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://kibana:${KIBANA_PORT};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}-grafana.${DOMAIN};
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}-grafana.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}-grafana.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://grafana:${GRAFANA_PORT};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${SUBDOMAIN}-mongo-express.${DOMAIN};
+    ssl_certificate /etc/letsencrypt/live/${SUBDOMAIN}-mongo-express.${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SUBDOMAIN}-mongo-express.${DOMAIN}/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://mongo-express:${MONGO_EXPRESS_PORT};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
