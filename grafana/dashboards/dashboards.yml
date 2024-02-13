@@ -1,0 +1,13 @@
+apiVersion: 1
+
+providers:
+  - name: 'Default'  # Nom du fournisseur de tableau de bord
+    orgId: 1          # ID de l'organisation dans Grafana
+    folder: ''        # Dossier où les tableaux de bord seront enregistrés, laisser vide pour le dossier par défaut
+    folderUid: ''     # UID du dossier, optionnel
+    type: file        # Type de fournisseur, 'file' pour le chargement depuis le système de fichiers
+    disableDeletion: false # Si vrai, empêche la suppression de tableaux de bord via l'UI Grafana
+    editable: true    # Permet l'édition des tableaux de bord via l'UI Grafana
+
+    options:
+      path: /etc/grafana/provisioning/dashboards # Chemin vers le dossier contenant les fichiers de tableaux de bord

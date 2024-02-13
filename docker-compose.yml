@@ -29,7 +29,7 @@ services:
       - elasticsearch
 
   back:
-    image: iadopt/aitwork-back:0.1.5
+    image: iadopt/aitwork-back:0.1.6
     container_name: aitwork-back
     ports:
       - "${BACK_PORT}:8080"
@@ -41,6 +41,7 @@ services:
       - elk
     restart: unless-stopped
     environment:
+      NODE_ENV: ${NODE_ENV:-}
       LICENSE_IADOPT: ${LICENSE_IADOPT:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       COHERE_API_KEY: ${COHERE_API_KEY:-}
@@ -60,9 +61,10 @@ services:
       MINIO_BUCKET: ${MINIO_BUCKET:-}
     volumes:
       - public_back_data:/tmp/uploads
+      - public_logs_back:/logs
 
   front:
-    image: iadopt/aitwork-front:0.1.5
+    image: iadopt/aitwork-front:0.1.6
     container_name: aitwork-front
     restart: unless-stopped
     depends_on:
@@ -134,6 +136,29 @@ services:
       - elk
     restart: unless-stopped
 
+  logstash:
+    container_name: public-logstash
+    image: logstash:8.11.3
+    volumes:
+      - ./elkstack/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - ./elkstack/logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      - public_logs_back:/usr/share/logstash/logs:Z
+    ports:
+      - "${LOGSTASH_BEATS_PORT}:5044"
+      - "${LOGSTASH_TCP_PORT}:50000/tcp"
+      - "${LOGSTASH_UDP_PORT}:50000/udp"
+      - "${LOGSTASH_MONITORING_PORT}:9600"
+    environment:
+      LS_JAVA_OPTS: -Xms256m -Xmx256m
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      ELASTICSEARCH_PORT: ${ELASTICSEARCH_PORT:-9200}
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
   kibana:
     container_name: public-kibana
     image: kibana:8.11.3
@@ -193,12 +218,13 @@ services:
     restart: unless-stopped
     environment:
       PROMETHEUS_PORT: ${PROMETHEUS_PORT:-}
+      ELASTICSEARCH_PORT: ${ELASTICSEARCH_PORT:-}
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
       GF_SECURITY_ADMIN_USER: 'admin'
       GF_SECURITY_ADMIN_PASSWORD: 'admin'
     volumes:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
 
   # nginx:
   #   build:
@@ -250,6 +276,7 @@ networks:
 
 volumes:
   public_back_data:
+  public_logs_back:
   public_elasticsearch_data:
   public_minio_data:
   public_mongodb_data:
