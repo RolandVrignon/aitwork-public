@@ -30,10 +30,12 @@ down:
 re: down build setup main
 	@echo "Les services ont été redémarrés avec succès."
 
-# Supprime les images, volumes et réseaux
-clean:
-	@echo "Suppression des images, volumes et réseaux..."
-	sudo docker-compose down --rmi all --volumes --remove-orphans
+# Supprime les images Docker non utilisées
+prune:
+	@echo "Suppression des images Docker non utilisées..."
+	sudo docker image prune -f
 
-
-
+# Supprime toutes les images Docker non utilisées
+prune-all:
+	@echo "Suppression de toutes les images Docker non utilisées..."
+	sudo docker image prune -a -f
