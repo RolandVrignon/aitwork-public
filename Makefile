@@ -22,6 +22,14 @@ main:
 	@echo "Démarrage de la stack principale en arrière-plan..."
 	sudo docker-compose up -d
 
+update-backend:
+	@echo "Mise à jour du backend..."
+	docker-compose stop back && docker-compose build back && docker-compose up -d back
+
+update-frontend:
+	@echo "Mise à jour du frontend..."
+	docker-compose stop front && docker-compose build front && docker-compose up -d front
+
 # Arrête et nettoie les services
 down:
 	@echo "Arrêt des services et nettoyage..."
