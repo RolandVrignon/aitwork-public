@@ -39,7 +39,6 @@ OPENROUTER_API_KEY="" ## If you want to use OpenRouter API
 WEBSITE_URL="" ## URL of the website
 CLIENT_JWT_SECRET="" ## Genereate Random string
 WEBSITE_JWT_SECRET="" ## Generate Random String
-REACT_APP_API_URL="" ## URL of the client API
 MONGODB_URL="mongodb://mongodb:${MONGODB_PORT:-27017}/Aitwork"
 ELASTICSEARCH_URL="http://elasticsearch:${ELASTICSEARCH_PORT:-9200}"
 ELASTICSEARCH_USERNAME="elastic"
